@@ -29,3 +29,27 @@ const ui = new UI();
 document.addEventListener('DOMContentLoaded', () => {
     ui.llenarOpciones();    //Lennar el select con los años
 })
+
+eventListeners();
+function eventListeners() {
+    const formulario = document.querySelector('#cotizar-seguro');
+    formulario.addEventListener('submit', cotizarSeguro);
+}
+
+function cotizarSeguro(e) {
+    e.preventDefault();
+
+    //Leer la marca seleccionada
+    const marca = document.querySelector('#marca').value;
+
+    //Leer el año seleccionado
+    const year = document.querySelector('#year').value;
+
+    //Leer el tipo de seguro seleccionado
+    const tipo = document.querySelector('input[name="tipo"]:checked').value;
+
+    (marca === '' || year === '' || tipo === '')
+        ? console.log('No pasó la validación')
+        : console.log('Si pasó la validación')
+
+}
